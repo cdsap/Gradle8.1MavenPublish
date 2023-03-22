@@ -1,1 +1,0 @@
-/Users/inakivillar/fork_caching_issue/untitled2/build/classes/kotlin/main/MainKt.class:/Users/inakivillar/fork_caching_issue/untitled2/build/classes/kotlin/main/com/example/MyPlugin.class

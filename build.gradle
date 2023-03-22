@@ -9,7 +9,7 @@ plugins {
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
-//ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
+
 repositories {
     mavenCentral()
 }
@@ -23,7 +23,7 @@ gradlePlugin {
     vcsUrl = 'https://github.com/gradle/android-cache-fix-gradle-plugin'
 
     plugins {
-        z {
+        myPlugin {
             id = 'test'
             displayName = 'Gradle Android cache fix plugin'
             description = 'Gradle plugin to fix Android caching problems'
@@ -32,9 +32,3 @@ gradlePlugin {
         }
     }
 }
-
-//tasks.withType(Sign) {
-//    onlyIf("isReleaseVersion is set") { isReleaseVersion }
-//}
-//
-
