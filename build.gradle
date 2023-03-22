@@ -1,11 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.7.21"
-    application
-    id ("maven-publish")
-    id ("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "1.1.0"
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'codenarc'
+    id 'com.gradle.plugin-publish' version '1.1.0'
+    id 'com.github.breadmoirai.github-release' version '2.4.1'
+    id 'org.gradle.wrapper-upgrade' version '0.11.1'
 }
 
 group = "org.example"
@@ -15,29 +16,25 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    testImplementation(kotlin("test"))
-}
+
 
 tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "1.8"
-}
 
-application {
-    mainClass.set("MainKt")
-}
 
 gradlePlugin {
+    website = 'https://github.com/gradle/android-cache-fix-gradle-plugin'
+    vcsUrl = 'https://github.com/gradle/android-cache-fix-gradle-plugin'
+
     plugins {
-        create("InfoKotlinProcessPlugin") {
-            id = "io.github.test.test"
-            displayName = "Info Kotlin Processes"
-            description = "Retrieve information of the Kotlin processes after the build execution"
-            implementationClass = "io.github.cdsap.kotlinprocess.InfoKotlinProcessPlugin"
+        androidCacheFixPlugin {
+            id = 'test'
+            displayName = 'Gradle Android cache fix plugin'
+            description = 'Gradle plugin to fix Android caching problems'
+            implementationClass = 'com.example.MyPlugin'
+            tags.addAll('android', 'cache', 'fix')
         }
     }
 }
