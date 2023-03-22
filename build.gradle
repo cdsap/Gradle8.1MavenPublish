@@ -3,33 +3,27 @@ plugins {
     id 'groovy'
     id 'java-gradle-plugin'
     id 'maven-publish'
-    id 'codenarc'
+    id 'signing'
     id 'com.gradle.plugin-publish' version '1.1.0'
-    id 'com.github.breadmoirai.github-release' version '2.4.1'
-    id 'org.gradle.wrapper-upgrade' version '0.11.1'
 }
 
 group = "org.example"
 version = "1.0-SNAPSHOT"
-
+//ext.isReleaseVersion = !version.endsWith("SNAPSHOT")
 repositories {
     mavenCentral()
 }
 
-
-
 tasks.test {
     useJUnitPlatform()
 }
-
-
 
 gradlePlugin {
     website = 'https://github.com/gradle/android-cache-fix-gradle-plugin'
     vcsUrl = 'https://github.com/gradle/android-cache-fix-gradle-plugin'
 
     plugins {
-        androidCacheFixPlugin {
+        z {
             id = 'test'
             displayName = 'Gradle Android cache fix plugin'
             description = 'Gradle plugin to fix Android caching problems'
@@ -38,3 +32,9 @@ gradlePlugin {
         }
     }
 }
+
+//tasks.withType(Sign) {
+//    onlyIf("isReleaseVersion is set") { isReleaseVersion }
+//}
+//
+
